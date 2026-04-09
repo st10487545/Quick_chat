@@ -22,6 +22,16 @@ public class Login {
         this.password = password;
         this.cellPhoneNumber = cellPhoneNumber;
     }
+    public boolean checkUserName() {
+        return username.contains("_") && username.length() <= 5;
+    }
+
+    public boolean checkPasswordComplexity() {
+        if (password.length() < 8) return false;
+
+        boolean hasUpper = false;
+        boolean hasDigit = false;
+        boolean hasSpecial = false;
 
     
 }
