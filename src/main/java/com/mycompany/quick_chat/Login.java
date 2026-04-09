@@ -58,6 +58,18 @@ public class Login {
         }
         return "Username successfully captured.\nPassword successfully captured.\nCell phone number successfully added.";
     }
+    public boolean loginUser(String enteredUsername, String enteredPassword) {
+        return this.username.equals(enteredUsername) && this.password.equals(enteredPassword);
+    }
+
+    public String returnLoginStatus(String enteredUsername, String enteredPassword) {
+        if (loginUser(enteredUsername, enteredPassword)) {
+            return "Welcome " + firstName + " " + lastName + " it is great to see you again.";
+        } else {
+            return "Username or password incorrect, please try again.";
+        }
+    }
+}
 
     
-}
+
