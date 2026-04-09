@@ -26,12 +26,15 @@ public class Quick_chat {
         System.out.println("Enter Username");
         String username =  scanner.nextLine();
         
+        System.out.println("Enter Password");
+        String password = scanner.nextLine();
+        
         System.out.println("Enter Cell Phone Number");
         String cellNumber = scanner.nextLine();
         
-        Login login = new Login(firstName,lastName,username,cellNumber);
+        Login login = new Login(firstName, lastName, username, password, cellNumber);
         
-        System.out.println("\n + login.registerUser()");
+        System.out.println("\n" + login.registerUser());
         
         if (login.checkUserName() && login.checkPasswordComplexity()&& login.checkCellPhoneNumber()){
             System.out.println("\n Quickchat Login");

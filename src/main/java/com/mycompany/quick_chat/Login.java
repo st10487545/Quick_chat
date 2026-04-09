@@ -4,6 +4,8 @@
  */
 package com.mycompany.quick_chat;
 
+import java.util.regex.Pattern;
+
 /**
  *
  * @author lab_services_student
