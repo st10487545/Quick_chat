@@ -35,10 +35,24 @@ public class Quick_chat {
         
         if (login.checkUserName() && login.checkPasswordComplexity()&& login.checkCellPhoneNumber()){
             System.out.println("\n Quickchat Login");
+            
+            System.out.print("Enter Username: ");
+            String enteredUsername = scanner.nextLine();
+
+            System.out.print("Enter Password: ");
+            String enteredPassword = scanner.nextLine();
+
+            System.out.println("\n" + login.returnLoginStatus(enteredUsername, enteredPassword));
         }
-        
-        
-        
+
+        scanner.close();
         
     }
 }
+        
+        
+        
+        
+        
+    
+
