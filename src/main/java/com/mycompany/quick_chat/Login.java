@@ -32,6 +32,32 @@ public class Login {
         boolean hasUpper = false;
         boolean hasDigit = false;
         boolean hasSpecial = false;
+        
+         for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) hasUpper = true;
+            if (Character.isDigit(c)) hasDigit = true;
+            if (!Character.isLetterOrDigit(c)) hasSpecial = true;
+        }
+
+        return hasUpper && hasDigit && hasSpecial;
+    }
+    public boolean checkCellPhoneNumber() {
+        String regex = "^\\+[0-9]{1,3}[0-9]{6,9}$";
+        return Pattern.matches(regex, cellPhoneNumber) && cellPhoneNumber.length() <= 12;
+    }
+    
+    public String registerUser() {
+        if (!checkUserName()) {
+            return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
+        }
+        if (!checkPasswordComplexity()) {
+            return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
+        }
+        if (!checkCellPhoneNumber()) {
+            return "Cell phone number incorrectly formatted or does not contain international code.";
+        }
+        return "Username successfully captured.\nPassword successfully captured.\nCell phone number successfully added.";
+    }
 
     
 }
