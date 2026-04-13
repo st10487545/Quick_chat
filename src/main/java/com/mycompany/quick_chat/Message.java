@@ -5,6 +5,8 @@
 package com.mycompany.quick_chat;
 
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -30,5 +32,27 @@ public class Message {
         this.message = message;
         this.messageID = generateMessageID();
         this.messageHash = createMessageHash();
+    }
+    // Builds a random 10-digit number to use as the message ID
+    private String generateMessageID() {
+        Random random = new Random();
+        long id = (long) (random.nextDouble() * 9_000_000_000L) + 1_000_000_000L;
+        return String.valueOf(id);
+    }
+
+    // Makes sure the message ID does not go over 10 characters
+    public boolean checkMessageID() {
+        return messageID.length() <= 10;
+    }
+
+    // Checks the recipient number starts with a + and international code
+    // Regex reference: https://stackoverflow.com/questions/6478875/regular-expression-matching-e-164-formatted-phone-numbers
+    public String checkRecipientCell() {
+        String regex = "^\\+[0-9]{1,3}[0-9]{6,9}$";
+        if (Pattern.matches(regex, recipient) && recipient.length() <= 12) {
+            return "Cell phone number successfully captured.";
+        } else {
+            return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
+        }
     }
 }
