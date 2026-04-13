@@ -55,4 +55,45 @@ public class Message {
             return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
         }
     }
+    // Builds the message hash using the first 2 digits of the ID,
+    // the message number, and the first and last words of the message
+    public String createMessageHash() {
+        String[] words = message.trim().split("\\s+");
+        String firstWord = words[0];
+        String lastWord = words[words.length - 1];
+        String firstTwoID = messageID.substring(0, 2);
+        return (firstTwoID + ":" + messageNumber + ":" + firstWord + lastWord).toUpperCase();
+    }
+
+    // Checks the message is within the 250 character limit
+    public String checkMessageLength() {
+        if (message.length() > 250) {
+            int excess = message.length() - 250;
+            return "Message exceeds 250 characters by " + excess + "; please reduce the size.";
+        }
+        return "Message ready to send.";
+    }
+
+    // Handles what happens based on what the user picks — send, disregard or store
+    public String SentMessage(int choice) {
+        switch (choice) {
+            case 1:
+                // Add message details to the session lists and bump the counter
+                sentMessages.add(message);
+                messageHashes.add(messageHash);
+                messageIDs.add(messageID);
+                totalMessagesSent++;
+                return "Message successfully sent.";
+            case 2:
+                // User chose to disregard — message is not saved
+                return "Press 0 to delete the message.";
+            case 3:
+                // Save the message to a JSON file for later
+                storeMessage();
+                return "Message successfully stored.";
+            default:
+                return "Invalid option, please try again.";
+        }
+    }
+
 }
