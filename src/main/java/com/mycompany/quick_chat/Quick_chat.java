@@ -67,6 +67,23 @@ public class Quick_chat {
                     menuChoice = Integer.parseInt(scanner.nextLine());
 
                     if (menuChoice == 1) {
+                        // Loop runs once for each message the user wants to send
+                        for (int i = 1; i <= numMessages; i++) {
+                            System.out.println("\n--- Message " + i + " of " + numMessages + " ---");
+
+                            System.out.print("Enter recipient cell number: ");
+                            String recipient = scanner.nextLine();
+
+                            System.out.print("Enter your message: ");
+                            String messageText = scanner.nextLine();
+
+                            // Create the message object — ID and hash are auto-generated
+                            Message msg = new Message(i, recipient, messageText);
+
+                            // Show validation results for recipient and message length
+                            System.out.println(msg.checkRecipientCell());
+                            System.out.println(msg.checkMessageLength());
+                    }
         
     }
 }
