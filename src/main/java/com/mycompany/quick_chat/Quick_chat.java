@@ -83,6 +83,27 @@ public class Quick_chat {
                             // Show validation results for recipient and message length
                             System.out.println(msg.checkRecipientCell());
                             System.out.println(msg.checkMessageLength());
+                            
+                            // Only continue if the message is within the character limit
+                            if (messageText.length() <= 250) {
+
+                                // Display full message details before sending
+                                System.out.println("\nMessage ID: " + msg.getMessageID());
+                                System.out.println("Message Hash: " + msg.getMessageHash());
+                                System.out.println("Recipient: " + msg.getRecipient());
+                                System.out.println("Message: " + msg.getMessage());
+
+                                // Let the user decide what to do with the message
+                                System.out.println("\n1) Send Message");
+                                System.out.println("2) Disregard Message");
+                                System.out.println("3) Store Message to send later");
+                                System.out.print("Choose an option: ");
+                                int sendChoice = Integer.parseInt(scanner.nextLine());
+
+                                System.out.println(msg.SentMessage(sendChoice));
+                            }
+                        }
+
                     }
         
     }
