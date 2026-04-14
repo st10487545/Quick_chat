@@ -48,7 +48,25 @@ public class Quick_chat {
             System.out.println("\n" + login.returnLoginStatus(enteredUsername, enteredPassword));
         }
 
-        scanner.close();
+         // ===== MAIN MENU =====
+            // Only show the menu if the login credentials were correct
+            if (login.loginUser(enteredUsername, enteredPassword)) {
+
+                System.out.println("\nHow many messages do you want to send?");
+                int numMessages = Integer.parseInt(scanner.nextLine());
+
+                int menuChoice = 0;
+
+                // Keep showing the menu until the user picks quit
+                while (menuChoice != 3) {
+                    System.out.println("\nWelcome to QuickChat.");
+                    System.out.println("1) Send Messages");
+                    System.out.println("2) Show recently sent messages");
+                    System.out.println("3) Quit");
+                    System.out.print("Choose an option: ");
+                    menuChoice = Integer.parseInt(scanner.nextLine());
+
+                    if (menuChoice == 1) {
         
     }
 }
