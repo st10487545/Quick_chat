@@ -103,11 +103,23 @@ public class Quick_chat {
                                 System.out.println(msg.SentMessage(sendChoice));
                             }
                         }
+                         // Show the total after all messages have been handled
+                        Message temp = new Message(0, "+270000000000", "temp message");
+                        System.out.println("\nTotal messages sent: " + temp.returnTotalMessages());
 
+                    } else if (menuChoice == 2) {
+                        // This feature is still being worked on
+                        System.out.println("Coming Soon.");
                     }
-        
+                }
+            }
+        }
+
+        scanner.close();
     }
 }
+
+                   
         
         
         
