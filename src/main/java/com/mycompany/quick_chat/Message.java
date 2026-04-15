@@ -25,7 +25,7 @@ public class Message {
     private static ArrayList<String> sentMessages = new ArrayList<>();
     private static ArrayList<String> messageHashes = new ArrayList<>();
     private static ArrayList<String> messageIDs = new ArrayList<>();
-    private static int totalMessagesSent = 0;
+    private static int totalMessagesSent = 0; 
 
     // Constructor sets up the message and auto-generates the ID and hash
     public Message(int messageNumber, String recipient, String message) {

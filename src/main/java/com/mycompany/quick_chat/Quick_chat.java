@@ -12,33 +12,36 @@ import java.util.Scanner;
  */
 public class Quick_chat {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner (System.in);
-        
-        System.out.println("QuickChat Registration");
-        
+   public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // ===== REGISTRATION =====
+        System.out.println("=== QuickChat Registration ===");
+
         System.out.println("Enter First Name");
         String firstName = scanner.nextLine();
-        
-        System.out.println("Enter Last Name ");
+
+        System.out.println("Enter Last Name");
         String lastName = scanner.nextLine();
-        
+
         System.out.println("Enter Username");
-        String username =  scanner.nextLine();
-        
+        String username = scanner.nextLine();
+
         System.out.println("Enter Password");
         String password = scanner.nextLine();
-        
-        System.out.println("Enter Cell Phone Number");
+
+        System.out.println("Enter Cell Phone Number (e.g. +27838968976)");
         String cellNumber = scanner.nextLine();
-        
+
+        // Create the login object and run registration checks
         Login login = new Login(firstName, lastName, username, password, cellNumber);
-        
         System.out.println("\n" + login.registerUser());
-        
-        if (login.checkUserName() && login.checkPasswordComplexity()&& login.checkCellPhoneNumber()){
-            System.out.println("\n Quickchat Login");
-            
+
+        // ===== LOGIN =====
+        // Only allow login if registration passed all three checks
+        if (login.checkUserName() && login.checkPasswordComplexity() && login.checkCellPhoneNumber()) {
+            System.out.println("\n=== QuickChat Login ===");
+
             System.out.print("Enter Username: ");
             String enteredUsername = scanner.nextLine();
 
@@ -46,9 +49,8 @@ public class Quick_chat {
             String enteredPassword = scanner.nextLine();
 
             System.out.println("\n" + login.returnLoginStatus(enteredUsername, enteredPassword));
-        }
 
-         // ===== MAIN MENU =====
+            // ===== MAIN MENU =====
             // Only show the menu if the login credentials were correct
             if (login.loginUser(enteredUsername, enteredPassword)) {
 
@@ -67,6 +69,7 @@ public class Quick_chat {
                     menuChoice = Integer.parseInt(scanner.nextLine());
 
                     if (menuChoice == 1) {
+
                         // Loop runs once for each message the user wants to send
                         for (int i = 1; i <= numMessages; i++) {
                             System.out.println("\n--- Message " + i + " of " + numMessages + " ---");
@@ -83,7 +86,7 @@ public class Quick_chat {
                             // Show validation results for recipient and message length
                             System.out.println(msg.checkRecipientCell());
                             System.out.println(msg.checkMessageLength());
-                            
+
                             // Only continue if the message is within the character limit
                             if (messageText.length() <= 250) {
 
@@ -103,7 +106,8 @@ public class Quick_chat {
                                 System.out.println(msg.SentMessage(sendChoice));
                             }
                         }
-                         // Show the total after all messages have been handled
+
+                        // Show the total after all messages have been handled
                         Message temp = new Message(0, "+270000000000", "temp message");
                         System.out.println("\nTotal messages sent: " + temp.returnTotalMessages());
 
